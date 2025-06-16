@@ -1,0 +1,485 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+     text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal; /* normal의 크기는 400 */
+}
+
+.clear::after {
+    content: "";
+    display: block;
+    clear:both; }
+
+
+/* ===== Header ===== */
+header {
+  width: 100%;
+  background-color: white;
+  height: 100px;
+  position: relative;
+  z-index: 10;
+}
+
+.header-wrap {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+/* 로고 */
+.logo {
+  float: left;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 90px;
+}
+
+/* 메뉴 (중앙 정렬) */
+.menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  font-size: 20px;
+  z-index: 2;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu li a {
+  color: #404040;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.menu li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #428EFF;
+  transition: width 0.3s ease;
+}
+
+.menu li a:hover::after {
+  width: 100%;
+}
+
+.menu li a:hover {
+  color: #428EFF;
+}
+
+/* ===== 서브메뉴 (드롭다운) ===== */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 160px;
+  z-index: 1000;
+}
+
+.menu li:hover .submenu {
+  display: block;
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #404040;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.submenu li a:hover {
+  background-color: #f0f0f0;
+  color: #428EFF;
+}
+
+/* ===== 아이콘 ===== */
+.icons {
+  float: right;
+  display: flex;
+  gap: 20px;
+  height: 100%;
+  align-items: center;
+  list-style: none;
+}
+
+.icons li {
+  text-align: center;
+  font-size: 16px;
+}
+
+.icons img {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: 0 auto 5px;
+}
+
+.icons p a {
+  text-decoration: none;
+  color: #404040;
+}
+
+/* clearfix */
+.header-wrap::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.main-slider {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  position: relative;
+  width: 5%;
+  transition: width 0.5s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.slide.active {
+  width: 90%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide-text {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  color: white;
+  z-index: 2;
+  display: none;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.slide.active .slide-text {
+  display: block;
+}
+
+.slide-text h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.slide-text p {
+  font-size: 18px;
+}
+
+.slide-num {
+  position: absolute;
+  bottom: 50px;
+  right: 20px;
+  color: white;
+  font-size: 18px;
+  transform: rotate(-90deg);
+  transform-origin: bottom right;
+  opacity: 1;
+}
+
+.slide.active .slide-num {
+  display: none;
+}
+
+
+/* 전시 영역!!!!!!!!!!!!!!! */
+
+.exhibition {
+  width: 1240px;
+  margin: 80px auto;
+}
+.exhibition h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.tab {
+  margin-bottom: 20px;
+}
+.tab span {
+  margin-right: 20px;
+  font-weight: 400;
+  color: #aaa;
+  cursor: pointer;
+}
+.tab span.on {
+  font-weight: bold;
+  color: black;
+  border-bottom: 2px solid #000;
+}
+.exh-wrap ul {
+  overflow: hidden;
+}
+.exh-wrap li {
+  float: left;
+  width: 23%;
+  margin-right: 2.66%;
+}
+.exh-wrap li:last-child {
+  margin-right: 0;
+}
+.exh-wrap img {
+  width: 100%;
+}
+.exh-wrap .loc {
+  font-size: 14px;
+  color: gray;
+}
+.exh-wrap .title {
+  font-weight: bold;
+  margin: 5px 0;
+}
+.exh-wrap .date {
+  font-size: 13px;
+  color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.program {
+  background: #3399ff;
+  padding: 100px 0;
+  color: white;
+  text-align: center;
+}
+
+.program h2 {
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+
+.program-tab {
+  width: 1240px;
+  margin: 0 auto 60px;
+  position: relative;
+  height: 48px;
+}
+
+.tab-btn-wrap {
+  width: 100%;
+  height: 100%;
+  border-bottom: 4px solid #b2cde9;
+  font-size: 0;
+}
+
+.tab-btn {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  font-size: 25px;
+  font-weight: bold;
+  color: #b2cde9;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+    line-height: 20px;
+}
+
+.tab-btn.active {
+  color: white;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: white;
+}
+
+.program-wrap {
+  width: 1240px;
+  margin: 0 auto;
+}
+
+.edu-box, .work-box {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.program-photo {
+  display: table-cell;
+  width: 400px;
+  position: relative;
+  vertical-align: top;
+  padding-right: 100px;
+}
+
+.main-photo {
+  position: relative;
+}
+
+.main-photo img {
+  width: 100%;
+  display: block;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+}
+
+.arrow img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.program-desc {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  padding-left: 80px;
+  position: relative;
+}
+
+.program-inner {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.program-desc h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 2;
+  margin-bottom: 40px;
+}
+
+.thumbs {
+  margin-top: 40px;
+  white-space: nowrap;
+  margin-bottom: 30px;
+}
+
+.thumbs img {
+  width: 130px;
+  margin-right: 20px;
+  vertical-align: top;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.reserve-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.reserve-btn a {
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.reserve-btn a span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
